@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Grúas Martín Bros está realizando tareas de mantenimiento. Volvemos pronto."
+    />
+    <meta name="theme-color" content="#101820" />
+    <title>404 | Sitio en mantenimiento - Grúas Martín Bros</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #101820;
+        color: #f5f7f2;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        min-height: 100svh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 2rem 1.25rem;
+        background:
+          radial-gradient(ellipse at 50% 38%, rgba(67, 93, 59, 0.24), transparent 52%),
+          repeating-linear-gradient(135deg, transparent 0 42px, rgba(255, 255, 255, 0.018) 42px 43px),
+          #101820;
+      }
+
+      main {
+        width: min(100%, 540px);
+        display: grid;
+        justify-items: center;
+        text-align: center;
+        animation: appear 650ms ease-out both;
+      }
+
+      .logo {
+        display: block;
+        width: min(68vw, 300px);
+        aspect-ratio: 1;
+        object-fit: contain;
+        border: 4px solid #fff;
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 22px 64px rgba(0, 0, 0, 0.32);
+      }
+
+      .code {
+        margin: 1.8rem 0 0.15rem;
+        color: #b4e252;
+        font-size: 0.85rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.8rem, 7vw, 2.8rem);
+        line-height: 1.12;
+      }
+
+      .message {
+        max-width: 38ch;
+        margin: 0.9rem 0 0;
+        color: #bac4c5;
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+
+      .rule {
+        width: 54px;
+        height: 3px;
+        margin-top: 1.6rem;
+        border: 0;
+        background: #e9b949;
+      }
+
+      .brand {
+        margin: 1rem 0 0;
+        color: #e6e9e3;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main aria-labelledby="maintenance-title">
+      <img
+        class="logo"
+        src="imagenes/d46c78ff-c54b-4f86-ba53-c4e6dc241446.jpg"
+        alt="Logo de Grúas Martín Bros con una grúa de asistencia"
+      />
+      <p class="code">ERROR 404</p>
+      <h1 id="maintenance-title">Sitio en mantenimiento</h1>
+      <p class="message">
+        Estamos realizando algunos ajustes para atenderte mejor. Volvemos pronto.
+      </p>
+      <hr class="rule" />
+      <p class="brand">Grúas Martín Bros</p>
+    </main>
+  </body>
+</html>

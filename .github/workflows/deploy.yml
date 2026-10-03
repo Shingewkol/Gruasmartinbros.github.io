@@ -5,6 +5,12 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      maintenance:
+        description: Mostrar la página de mantenimiento en la portada
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -29,6 +35,8 @@ jobs:
         run: npm install
       - name: Build site
         run: npm run build
+        env:
+          VITE_MAINTENANCE: ${{ inputs.maintenance || 'false' }}
       - name: Add custom domain
         run: cp CNAME dist/CNAME
       - name: Upload Pages artifact
