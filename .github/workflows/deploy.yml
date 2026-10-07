@@ -12,10 +12,7 @@ on:
         default: false
         type: boolean
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+permissions: {}
 
 concurrency:
   group: github-pages
@@ -24,6 +21,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -33,6 +33,8 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: npm install
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
       - name: Build site
         run: npm run build
         env:
@@ -54,6 +56,9 @@ jobs:
           path: dist
 
   deploy:
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
