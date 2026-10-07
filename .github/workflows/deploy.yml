@@ -42,6 +42,7 @@ jobs:
           cp -R imagenes dist/imagenes
           if [ "$VITE_MAINTENANCE" = "true" ]; then
             cp dist/mantenimiento.html dist/index.html
+            cp dist/mantenimiento.html dist/fotografia.html
           fi
         env:
           VITE_MAINTENANCE: ${{ inputs.maintenance || 'false' }}

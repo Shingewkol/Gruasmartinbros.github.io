@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fotografia | Grúa Martín Bros</title>
+    <link rel="icon" type="image/jpeg" href="imagenes/logo_icon.jpg" />
     <style>
       :root {
         --bg: #0f172a;
@@ -177,6 +178,10 @@
         gap: 1.5rem;
       }
 
+      .gallery[hidden] {
+        display: none;
+      }
+
       .gallery-item {
         background: rgba(17, 24, 39, 0.8);
         border: 1px solid rgba(255,255,255,0.08);
@@ -190,11 +195,6 @@
         object-fit: cover;
       }
 
-      .gallery-item .caption {
-        padding: 1rem 1.1rem 1.2rem;
-        color: var(--muted);
-      }
-
       .back-link {
         display: inline-block;
         margin-top: 2rem;
@@ -205,6 +205,25 @@
         display: flex;
         justify-content: flex-end;
         margin-top: 2rem;
+      }
+
+      .pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .pagination button {
+        border: 0;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      .pagination button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
       }
 
       footer {
@@ -237,7 +256,7 @@
     <header>
       <div class="container nav">
         <a href="index.html" class="brand" aria-label="Gruas Martinbros inicio">
-          <img src="imagenes/d46c78ff-c54b-4f86-ba53-c4e6dc241446.jpg" alt="Gruas Martinbros" />
+          <img src="imagenes/logo_icon.jpg" alt="Gruas Martinbros" />
           <span>Grúas Martín Bros</span>
         </a>
         <nav class="nav-links" aria-label="Menú principal">
@@ -252,29 +271,63 @@
 
     <main class="page">
       <div class="container">
-        <section class="hero">
-          <h1>Fotografia</h1>
-          <p>
-            Nuestro trabajo en movimiento, maquinaria y atención profesional, documentado con imágenes que reflejan seguridad, precisión y compromiso.
-          </p>
+        <section class="gallery" id="gallery-page-1" aria-label="Fotos, página 1 de 2">
+          <article class="gallery-item">
+            <img src="imagenes/WhatsApp%20Image%202026-10-06%20at%2014.33.01.jpeg" alt="Grúa trasladando un automóvil en una calle residencial" />
+          </article>
+
+          <article class="gallery-item">
+            <img src="imagenes/WhatsApp%20Image%202026-10-06%20at%2014.32.19.jpeg" alt="Camioneta de grúa transportando vehículos con carro de arrastre" />
+          </article>
+
+          <article class="gallery-item">
+            <img src="imagenes/WhatsApp%20Image%202026-10-06%20at%2014.32.19%20(1).jpeg" alt="Grúa trasladando dos vehículos por carretera" />
+          </article>
+
+          <article class="gallery-item">
+            <img src="imagenes/WhatsApp%20Image%202026-10-06%20at%2014.32.18.jpeg" alt="Camión grúa y carro de arrastre durante un servicio nocturno" />
+          </article>
+
+          <article class="gallery-item">
+            <img src="imagenes/WhatsApp%20Image%202026-10-06%20at%2014.32.18%20(1).jpeg" alt="Dos vehículos asegurados sobre un carro de arrastre" />
+          </article>
+
+          <article class="gallery-item">
+            <img src="imagenes/WhatsApp%20Image%202026-10-02%20at%2012.14.53.jpeg" alt="Automóvil blanco transportado en una grúa" />
+          </article>
         </section>
 
-        <section class="gallery" aria-label="Galería de fotografías">
+        <section class="gallery" id="gallery-page-2" aria-label="Fotos, página 2 de 2" hidden>
           <article class="gallery-item">
-            <img src="imagenes/d46c78ff-c54b-4f86-ba53-c4e6dc241446.jpg" alt="Grúa trabajando" />
-            <div class="caption">Operación de grúa con atención especializada a Vehiculos Alta gama.</div>
+            <img src="imagenes/WhatsApp%20Image%202026-10-06%20at%2023.56.55.jpeg" alt="Camioneta de grúa trasladando un automóvil durante la noche" />
           </article>
 
           <article class="gallery-item">
-            <img src="imagenes/d46c78ff-c54b-4f86-ba53-c4e6dc241446.jpg" alt="Servicio de transporte" />
-            <div class="caption">Traslado seguro y eficiente de cargas pesadas.</div>
+            <img src="imagenes/WhatsApp%20Image%202026-10-06%20at%2023.56.55%20(1).jpeg" alt="Grúa trasladando un automóvil blanco" />
           </article>
 
           <article class="gallery-item">
-            <img src="imagenes/d46c78ff-c54b-4f86-ba53-c4e6dc241446.jpg" alt="Trabajo en sitio" />
-            <div class="caption">Atención profesional en trabajos de grúa y logística.</div>
+            <img src="imagenes/WhatsApp%20Image%202026-10-06%20at%2023.56.55%20(2).jpeg" alt="Camioneta transportada sobre una grúa" />
+          </article>
+
+          <article class="gallery-item">
+            <img src="imagenes/WhatsApp%20Image%202026-10-06%20at%2023.56.55%20(3).jpeg" alt="Grúa trasladando un remolque de carga" />
+          </article>
+
+          <article class="gallery-item">
+            <img src="imagenes/WhatsApp%20Image%202026-10-06%20at%2023.56.55%20(4).jpeg" alt="Automóvil rojo asegurado en una grúa" />
+          </article>
+
+          <article class="gallery-item">
+            <img src="imagenes/WhatsApp%20Image%202026-10-06%20at%2023.56.56.jpeg" alt="Automóvil blanco trasladado en una grúa" />
           </article>
         </section>
+
+        <nav class="pagination" aria-label="Páginas de fotografías">
+          <button class="btn btn-primary" id="previous-page" type="button" aria-controls="gallery-page-1 gallery-page-2" disabled>Anterior</button>
+          <span id="page-status" aria-live="polite">Página 1 de 2</span>
+          <button class="btn btn-primary" id="next-page" type="button" aria-controls="gallery-page-1 gallery-page-2">Siguiente</button>
+        </nav>
 
         <div class="page-actions">
           <a class="btn btn-primary back-link" href="index.html">Volver al inicio</a>
@@ -285,5 +338,27 @@
     <footer>
       <div class="container">© 2026 Wkol Host. Todos los derechos reservados.</div>
     </footer>
+    <script>
+      const galleryPages = [...document.querySelectorAll(".gallery")];
+      const previousPageButton = document.querySelector("#previous-page");
+      const nextPageButton = document.querySelector("#next-page");
+      const pageStatus = document.querySelector("#page-status");
+      let currentPage = 0;
+
+      function showGalleryPage(pageIndex) {
+        currentPage = Math.max(0, Math.min(pageIndex, galleryPages.length - 1));
+
+        galleryPages.forEach((page, index) => {
+          page.hidden = index !== currentPage;
+        });
+
+        previousPageButton.disabled = currentPage === 0;
+        nextPageButton.disabled = currentPage === galleryPages.length - 1;
+        pageStatus.textContent = `Página ${currentPage + 1} de ${galleryPages.length}`;
+      }
+
+      previousPageButton.addEventListener("click", () => showGalleryPage(currentPage - 1));
+      nextPageButton.addEventListener("click", () => showGalleryPage(currentPage + 1));
+    </script>
   </body>
 </html>
