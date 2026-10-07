@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-iINqj4p7pzoJsarHaBtU2ayPbyGS2gcObJOJDeXp8gU='; script-src-attr 'none'; connect-src 'self'; form-action 'none'; upgrade-insecure-requests" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-9RsIs43g5vEqE9c7xOBoVaWZLfHSkMh4u6CnB5MTq0E='; script-src-attr 'none'; connect-src 'self'; form-action 'none'; upgrade-insecure-requests" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Fotografia | Grúa Martín Bros</title>
     <link rel="icon" type="image/jpeg" href="imagenes/logo_icon.jpg" />
@@ -195,6 +195,64 @@
         width: 100%;
         height: 260px;
         object-fit: cover;
+        cursor: zoom-in;
+      }
+
+      .gallery-item img:focus-visible {
+        outline: 3px solid var(--primary);
+        outline-offset: -3px;
+      }
+
+      .image-viewer {
+        position: relative;
+        width: min(94vw, 1100px);
+        max-width: none;
+        max-height: 92vh;
+        max-height: 92svh;
+        padding: 3.5rem 1rem 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        background: #0b1120;
+        color: var(--text);
+      }
+
+      .image-viewer::backdrop {
+        background: rgba(2, 8, 23, 0.88);
+      }
+
+      .image-viewer img {
+        width: 100%;
+        max-height: calc(92vh - 5rem);
+        max-height: calc(92svh - 5rem);
+        object-fit: contain;
+        margin: 0 auto;
+      }
+
+      .viewer-close {
+        position: absolute;
+        top: 0.6rem;
+        right: 0.6rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        background: #1f2937;
+        color: var(--text);
+        font: inherit;
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .viewer-close:focus-visible {
+        outline: 3px solid var(--primary);
+        outline-offset: 2px;
+      }
+
+      .viewer-caption {
+        margin: 0.75rem 0 0;
+        color: var(--muted);
+        text-align: center;
       }
 
       .back-link {
@@ -337,6 +395,12 @@
       </div>
     </main>
 
+    <dialog class="image-viewer" id="image-viewer" aria-label="Imagen ampliada">
+      <button class="viewer-close" id="viewer-close" type="button" aria-label="Cerrar imagen">&times;</button>
+      <img id="viewer-image" alt="" />
+      <p class="viewer-caption" id="viewer-caption"></p>
+    </dialog>
+
     <footer>
       <div class="container">© 2026 Wkol Host. Todos los derechos reservados.</div>
     </footer>
@@ -345,6 +409,10 @@
       const previousPageButton = document.querySelector("#previous-page");
       const nextPageButton = document.querySelector("#next-page");
       const pageStatus = document.querySelector("#page-status");
+      const imageViewer = document.querySelector("#image-viewer");
+      const viewerImage = document.querySelector("#viewer-image");
+      const viewerCaption = document.querySelector("#viewer-caption");
+      const viewerCloseButton = document.querySelector("#viewer-close");
       let currentPage = 0;
 
       function showGalleryPage(pageIndex) {
@@ -361,6 +429,41 @@
 
       previousPageButton.addEventListener("click", () => showGalleryPage(currentPage - 1));
       nextPageButton.addEventListener("click", () => showGalleryPage(currentPage + 1));
+
+      document.querySelectorAll(".gallery-item img").forEach((image) => {
+        image.tabIndex = 0;
+        image.setAttribute("role", "button");
+        image.setAttribute("aria-haspopup", "dialog");
+        image.setAttribute("aria-label", `Ampliar imagen: ${image.alt}`);
+
+        function openViewer() {
+          image.focus();
+          viewerImage.src = image.src;
+          viewerImage.alt = image.alt;
+          viewerCaption.textContent = image.alt;
+          imageViewer.showModal();
+        }
+
+        image.addEventListener("click", openViewer);
+        image.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openViewer();
+          }
+        });
+      });
+
+      imageViewer.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          event.preventDefault();
+          imageViewer.close();
+        }
+      });
+
+      viewerCloseButton.addEventListener("click", () => imageViewer.close());
+      imageViewer.addEventListener("click", (event) => {
+        if (event.target === imageViewer) imageViewer.close();
+      });
     </script>
   </body>
 </html>
