@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-9RsIs43g5vEqE9c7xOBoVaWZLfHSkMh4u6CnB5MTq0E='; script-src-attr 'none'; connect-src 'self'; form-action 'none'; upgrade-insecure-requests" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-aMuS77i8WPL9wsMJ9Vsj391D4sdmkccg6a2fX7Zk/vQ='; script-src-attr 'none'; connect-src 'self'; form-action 'none'; upgrade-insecure-requests" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Fotografia | Grúa Martín Bros</title>
     <link rel="icon" type="image/jpeg" href="imagenes/logo_icon.jpg" />
@@ -249,12 +249,6 @@
         outline-offset: 2px;
       }
 
-      .viewer-caption {
-        margin: 0.75rem 0 0;
-        color: var(--muted);
-        text-align: center;
-      }
-
       .back-link {
         display: inline-block;
         margin-top: 2rem;
@@ -398,7 +392,6 @@
     <dialog class="image-viewer" id="image-viewer" aria-label="Imagen ampliada">
       <button class="viewer-close" id="viewer-close" type="button" aria-label="Cerrar imagen">&times;</button>
       <img id="viewer-image" alt="" />
-      <p class="viewer-caption" id="viewer-caption"></p>
     </dialog>
 
     <footer>
@@ -411,7 +404,6 @@
       const pageStatus = document.querySelector("#page-status");
       const imageViewer = document.querySelector("#image-viewer");
       const viewerImage = document.querySelector("#viewer-image");
-      const viewerCaption = document.querySelector("#viewer-caption");
       const viewerCloseButton = document.querySelector("#viewer-close");
       let currentPage = 0;
 
@@ -440,7 +432,6 @@
           image.focus();
           viewerImage.src = image.src;
           viewerImage.alt = image.alt;
-          viewerCaption.textContent = image.alt;
           imageViewer.showModal();
         }
 
