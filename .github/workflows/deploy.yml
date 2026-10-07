@@ -50,6 +50,11 @@ jobs:
           VITE_MAINTENANCE: ${{ inputs.maintenance || 'false' }}
       - name: Add custom domain
         run: cp CNAME dist/CNAME
+      - name: Publish security policy
+        run: |
+          cp SECURITY.md dist/SECURITY.md
+          mkdir -p dist/.well-known
+          cp .well-known/security.txt dist/.well-known/security.txt
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
