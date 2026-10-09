@@ -475,13 +475,21 @@
       .contact-action-buttons {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 0.7rem;
       }
 
-      .btn-call {
-        display: inline-flex;
+      .contact-action-buttons .btn {
+        display: flex;
         align-items: center;
+        justify-content: center;
+        width: 172px;
+        height: 56px;
+        padding: 0 1rem;
+        text-align: center;
+      }
+
+      .btn-call {
         gap: 0.65rem;
         background: #22c55e;
         color: #052e16;
