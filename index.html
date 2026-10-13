@@ -460,6 +460,55 @@
         font-size: 0;
       }
 
+      .local-text-editor {
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+        z-index: 21;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        max-width: calc(100vw - 100px);
+        padding: 0.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 12px;
+        background: #111827;
+        box-shadow: 0 8px 24px rgba(2, 8, 23, 0.35);
+      }
+
+      .local-text-editor[hidden] {
+        display: none;
+      }
+
+      .local-text-editor button {
+        min-height: 40px;
+        padding: 0.55rem 0.8rem;
+        border: 0;
+        border-radius: 8px;
+        background: var(--primary);
+        color: #111827;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .local-text-editor button:focus-visible {
+        outline: 3px solid #fff;
+        outline-offset: 2px;
+      }
+
+      .local-text-editor [data-editor-status] {
+        color: var(--text);
+        font-size: 0.8rem;
+      }
+
+      body.local-editing [contenteditable="plaintext-only"] {
+        outline: 2px dashed #69f50b;
+        outline-offset: 3px;
+        cursor: text;
+      }
+
       .whatsapp-float svg {
         width: 28px;
         height: 28px;
@@ -912,8 +961,15 @@
       </svg>
     </a>
 
+    <aside class="local-text-editor" aria-label="Editor local de textos" hidden>
+      <button type="button" data-editor-toggle>Editar textos</button>
+      <button type="button" data-editor-reset hidden>Restaurar original</button>
+      <span data-editor-status role="status" aria-live="polite"></span>
+    </aside>
+
     <footer>
       <div class="container">© 2026 Wkol Host. Todos los derechos reservados.</div>
     </footer>
+    <script type="module" src="/editor-textos.js"></script>
   </body>
 </html>
